@@ -1,9 +1,6 @@
 \documentclass{HNUThesis}
 
-
-
-\usepackage{ulem} % 提供了划线命令
-
+\usepackage{caption}
 
 
 \begin{document}
@@ -45,11 +42,46 @@ Since different vector potentials lead to different kinetic energies, the relati
 
 \pagenumbering{arabic} % Set page numbering to Arabic numerals for the main content
 
-\section{摘要}
-计划骨结核
-\subsection{客户收到JF}
-巴萨接电话·1
-\section{杀猪刀}
-啊手动阀
-% 结束文档
+
+\section{I级叶/盘转子错频方案的对比分析}
+在叶轮机械领域，对一个实际的叶盘转子，错频是指由于单个叶片之间因几何上或结构上的不同而造成的其在固有频率上的差异。……
+……
+\subsection{多自由度系统的强迫响应分析}
+由前面的分析可知，响应分析在数学上是一个具有38个自由度的二阶线性微分方程的数值积分问题。……
+\subsubsection{动态响应的计算方法}
+1.系统的运动方程	
+多自由度系统运动微分方程的一般形式为：……
+
+2.微分方程组的数值积分
+一阶常系数微分方程组的初值问题可表述为：……
+\subsubsection{强迫响应分析前的准备工作}
+……
+
+
+\begin{table}[htbp]
+    \centering
+    \caption{示例表格}
+    \label{tab:example}
+    \begin{tabular}{lcr}
+    \toprule
+    左列 & 中列 & 右列 \\
+    \midrule
+    A & B & C \\
+    D & E & F \\
+    \bottomrule
+    \end{tabular}
+    \end{table}
+
+    
+    \begin{figure}[htbp]
+        \centering % 图形居中
+        \includegraphics[width=0.8\linewidth]{figures/nick.jpeg} % 插入图形，这里假设图形文件名为example-image
+        \caption{示例图形} % 图形标题
+        \label{fig:example} % 用于引用图形的标签
+        \end{figure}
+
+    \bibliographystyle{plain}
+    \bibliography{references} % Assumes you have a references.bib file
+    
+
 \end{document}

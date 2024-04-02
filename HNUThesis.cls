@@ -1,6 +1,6 @@
 \ProvidesClass{HNUThesis}[2023/04/06 v1.0 Hunan University Thesis Class]
 \LoadClass[12pt]{article} % 基于article类
-
+\usepackage{graphicx} % 引入graphicx宏包来处理图形
 \usepackage{amssymb}
 \RequirePackage{caption}
 \RequirePackage{ctex} % 支持中文
@@ -23,35 +23,18 @@
 \newcommand{\DateDay}[1]{\def\thedateday{#1}}
 
 % 定义封面
-\newcommand{\MakeTitlePage}{
-    \begin{titlepage}
-        \centering
-        \vspace*{1cm}
-        % \includegraphics[width=0.5\textwidth]{hunan_university_logo.png} % 湖南大学徽标图片文件名，如需启用请取消注释
-        \vspace{3cm}
-        {\huge\bfseries \thetitle \par}
-        \vspace{2cm}
-        {\Large 学生姓名：\thestudent \par}
-        \vspace{1cm}
-        {\Large 学生学号：\thestudentnum \par}
-        \vspace{1cm}
-        {\Large 专业班级：\themajor \par}
-        \vspace{1cm}
-        {\Large 学院名称：\thedepartment \par}
-        \vspace{1cm}
-        {\Large 指导老师：\theadvisor \par}
-        \vfill
-        {\Large \thedateyear 年 \thedatemonth 月 \thedateday 日\par}
-    \end{titlepage}
-}
+
 \RequirePackage{titlesec} % 确保引入了titlesec包
-\AtBeginDocument{
+
+
   % 设置正文字体大小为小四号（大约12pt），并指定宋体
   \renewcommand\normalsize{\fontsize{12pt}{14.4pt}\selectfont}
   \normalsize % 应用设置
   \setCJKmainfont{SimSun} % 设置正文中文字体为宋体
   \setCJKsansfont{SimHei} % 设置中文黑体
   \setmainfont{Times New Roman} % 设置英文正文字体
+\AtBeginDocument{
+
   
   % 设置章节标题样式
   \titleformat{\section}
@@ -63,28 +46,70 @@
       % 调整二级和三级标题前后的间隔
   \titlespacing*{\subsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
   \titlespacing*{\subsubsection}{0pt}{0.5\baselineskip}{0.5\baselineskip}
-
-
-
-  % 设置图表标题样式为黑体五号字
-  \DeclareCaptionFont{fiveht}{\zihao{5}\heiti}
-  \captionsetup[figure]{
-    font=fiveht, % 使用刚刚定义的字体样式
-    labelsep=quad, % 标签和文字之间的分隔符样式为一个空格大小
-    figurename=图, % 确保“图”字使用中文
-    \captionsetup[table]{
-        font=fiveht,
-        labelsep=quad,
-        tablename=表, % 确保“表”字使用中文
-        position=top, % 表格标题通常位于表格上方
-      }
-
-
+ 
 
 }
 
-}
+% 设置图表标题样式为黑体五号字
+\DeclareCaptionFont{fiveht}{\zihao{5}\heiti}
+
+\captionsetup[figure]{
+  font=fiveht, % 使用刚刚定义的字体样式
+  labelsep=quad, % 标签和文字之间的分隔符样式为一个空格大小
+  figurename=图, % 确保“图”字使用中文
+   }
+
+  \captionsetup[table]{
+      font=fiveht,
+      labelsep=quad,
+      tablename=表, % 确保“表”字使用中文
+      position=top, % 表格标题通常位于表格上方
+    }
+
+
+% Load necessary packages
+\RequirePackage{titletoc}
+
+% Command for dotted lines in the table of contents
+\newcommand{\dotfillwithindent}{\dotfill}
+
+
+% Center the table of contents title
+\usepackage{tocloft} % 使用tocloft宏包来自定义目录的样式
+
+\renewcommand{\cfttoctitlefont}{\hfil\heiti\zihao{3}} % 设置目录标题为居中（\hfil）、黑体（\bfseries）、三号字（\zihao{3}）
+\renewcommand{\contentsname}{目\hspace{3em}录} % 重新定义目录标题文本
+
+% Define the style for the section entries in the ToC
+\titlecontents{section}
+  [0pt] % left margin
+  {\zihao{-4}\heiti} % above code (e.g., bold section titles)
+  {} % numbered-entry format
+  {} % numberless-entry format
+  {\dotfillwithindent\contentspage} % filler-page format (dots followed by page number)
+
+% Define the style for the subsection entries in the ToC
+\titlecontents{subsection}
+  [2em] % left margin (indented from section)
+  {\zihao{-4}} % above code (e.g., non-bold subsection titles)
+  {\contentslabel{1.5em}} % numbered-entry format
+  {} % numberless-entry format
+  {\dotfillwithindent\contentspage} % filler-page format (dots followed by page number)
+
+% Define the style for the subsubsection entries in the ToC
+\titlecontents{subsubsection}
+  [5em] % left margin (indented from subsection)
+  {\zihao{-4}} % above code (e.g., non-bold subsubsection titles)
+  {\contentslabel{2.3em}} % numbered-entry format
+  {} % numberless-entry format
+  {\dotfillwithindent\contentspage} % filler-page format (dots followed by page number)
   
+
+
+  \usepackage{booktabs} % 用于更优雅的表格线
+
+
+
   \usepackage{fancyhdr}
   \pagestyle{fancy}
   \fancyhf{} % 清除默认页眉页脚
@@ -101,7 +126,7 @@
   % 定义页眉和页脚中的内容
   \fancyhead[C]{湖南大学本科生毕业论文（设计)} % 页眉中间内容
   \fancyfoot[C]{\thepage} % 页脚中间内容
-}
+
 
 
 \newcommand{\makeconsent}{
@@ -143,13 +168,13 @@
 
   \newcommand{\abstracttitle}[1]{
     \begin{center}
-      {\zihao{-3}\heiti  #1}
+      {\zihao{-3}\heiti  #1}\\[1em]
     \end{center}
   }
 
   \newcommand{\Abstracttitle}[1]{
     \begin{center}
-      \textbf{\zihao{-3} #1}
+      \textbf{\zihao{-3} #1}\\[1em]
     \end{center}
   }
 
