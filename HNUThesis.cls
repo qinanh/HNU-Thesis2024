@@ -141,6 +141,59 @@
   }
 
 
+  \newcommand{\abstracttitle}[1]{
+    \begin{center}
+      {\zihao{-3}\heiti  #1}
+    \end{center}
+  }
+
+  \newcommand{\Abstracttitle}[1]{
+    \begin{center}
+      \textbf{\zihao{-3} #1}
+    \end{center}
+  }
+
+  \renewenvironment{abstract}{
+  \small
+  \begin{center}
+    {\zihao{3}\heiti  摘\hspace{2em}要}
+  \end{center}
+  \addcontentsline{toc}{section}{摘要} % Add abstract to the table of contents
+  \par
+  \zihao{-4}
+}{
+  \par
+}
+
+\newenvironment{Abstract}{
+  \small
+  \begin{center}
+    \textbf{\zihao{3} Abstract}
+  \end{center}
+  \addcontentsline{toc}{section}{Abstract} % Add abstract to the table of contents
+  \par
+  \zihao{-4}
+}{
+  \par
+}
+
+
+% Define keywords command
+\newcommand{\keywords}[1]{
+  \vspace{1em}
+  \noindent
+  {\zihao{4}\heiti 关键词:} {\zihao{-4}\heiti #1}
+  \newpage
+}
+
+\newcommand{\Keywords}[1]{
+  \vspace{1em}
+  \noindent
+  \textbf{{\zihao{4} Key Words:} {\zihao{-4}#1}}
+  \newpage
+}
+
+
 % 设置变量
 \newcommand{\universityname}{湖 南 大 学}
 \newcommand{\thesisdeclaration}{毕业论文（设计）原创性声明}
